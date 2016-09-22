@@ -411,7 +411,7 @@
     }
     
     //Prepare the localized options
-    NSString *cancelButtonTitle = NSLocalizedStringFromTableInBundle(@"Cancel", @"TOCropViewControllerLocalizable", resourceBundle, nil);
+    NSString *cancelButtonTitle = NSLocalizedStringFromTableInBundle(@"Undo", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     NSString *originalButtonTitle = NSLocalizedStringFromTableInBundle(@"Original", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     NSString *squareButtonTitle = NSLocalizedStringFromTableInBundle(@"Square", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     
