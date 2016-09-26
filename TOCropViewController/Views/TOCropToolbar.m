@@ -135,8 +135,9 @@
     _resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _resetButton.contentMode = UIViewContentModeCenter;
     _resetButton.tintColor = [UIColor whiteColor];
-    _resetButton.enabled = NO;
-    [_resetButton setImage:[TOCropToolbar resetImage] forState:UIControlStateNormal];
+    _resetButton.enabled = YES;
+//    [_resetButton setImage:[TOCropToolbar resetImage] forState:UIControlStateNormal];
+    [_resetButton setImage: [UIImage imageNamed:@"rubish_bin"] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_resetButton];
 }

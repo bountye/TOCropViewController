@@ -89,6 +89,14 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
  */
 - (void)cropViewController:(TOCropViewController *)cropViewController didFinishCancelled:(BOOL)cancelled;
 
+/**
+ If implemented, when the user hits cancel, or completes a
+ UIActivityViewController operation, this delegate will be called,
+ giving you a chance to manually dismiss the view controller
+ 
+ */
+- (void)cropViewController:(TOCropViewController *)cropViewController didDeleteImage:(BOOL)deleted;
+
 @end
 
 @interface TOCropViewController : UIViewController
@@ -251,6 +259,11 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
  Resets object of TOCropViewController class as if user pressed reset button in the bottom bar themself
  */
 - (void)resetCropViewLayout;
+
+/**
+ Delete Image
+ */
+- (void)deleteImage;
 
 /** 
  Set the aspect ratio to be one of the available preset options. These presets have specific behaviour

@@ -35,6 +35,12 @@
 
 @implementation ViewController
 
+
+- (void)cropViewController:(TOCropViewController *)cropViewController didDeleteImage:(BOOL)deleted {
+    NSLog(@"Delete Delegation working");
+}
+
+
 #pragma mark - Image Picker Delegate -
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
@@ -245,5 +251,7 @@
     [super viewDidLayoutSubviews];
     [self layoutImageView];
 }
+
+
 
 @end

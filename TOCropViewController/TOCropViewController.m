@@ -60,6 +60,7 @@
 - (void)doneButtonTapped;
 - (void)showAspectRatioDialog;
 - (void)resetCropViewLayout;
+- (void)deleteImage;
 - (void)rotateCropViewClockwise;
 - (void)rotateCropViewCounterclockwise;
 
@@ -114,7 +115,8 @@
     self.toolbar.doneButtonTapped =     ^{ [weakSelf doneButtonTapped]; };
     self.toolbar.cancelButtonTapped =   ^{ [weakSelf cancelButtonTapped]; };
     
-    self.toolbar.resetButtonTapped =    ^{ [weakSelf resetCropViewLayout]; };
+//    self.toolbar.resetButtonTapped =    ^{ [weakSelf resetCropViewLayout]; };
+    self.toolbar.resetButtonTapped =    ^{ [weakSelf deleteImage]; };
     self.toolbar.clampButtonTapped =    ^{ [weakSelf showAspectRatioDialog]; };
     
     self.toolbar.rotateCounterclockwiseButtonTapped = ^{ [weakSelf rotateCropViewCounterclockwise]; };
@@ -387,6 +389,15 @@
     }
 }
 
+#pragma mark - Reset -
+- (void)deleteImage
+{
+    if ([self.delegate respondsToSelector:@selector(cropViewController:didDeleteImage:)]) {
+        [self.delegate cropViewController:self didDeleteImage:YES];
+        return;
+    }
+}
+
 #pragma mark - Aspect Ratio Handling -
 - (void)showAspectRatioDialog
 {
@@ -411,7 +422,7 @@
     }
     
     //Prepare the localized options
-    NSString *cancelButtonTitle = NSLocalizedStringFromTableInBundle(@"Undo", @"TOCropViewControllerLocalizable", resourceBundle, nil);
+    NSString *cancelButtonTitle = NSLocalizedStringFromTableInBundle(@"Cancel", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     NSString *originalButtonTitle = NSLocalizedStringFromTableInBundle(@"Original", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     NSString *squareButtonTitle = NSLocalizedStringFromTableInBundle(@"Square", @"TOCropViewControllerLocalizable", resourceBundle, nil);
     
@@ -546,7 +557,8 @@
 
 - (void)cropViewDidBecomeNonResettable:(TOCropView *)cropView
 {
-    self.toolbar.resetButtonEnabled = NO;
+//    self.toolbar.resetButtonEnabled = NO;
+    self.toolbar.resetButtonEnabled = YES;
 }
 
 #pragma mark - Presentation Handling -
