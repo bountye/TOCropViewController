@@ -394,6 +394,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(cropViewController:didDeleteImage:)]) {
         [self.delegate cropViewController:self didDeleteImage:YES];
+        [self cancelButtonTapped];
         return;
     }
 }
